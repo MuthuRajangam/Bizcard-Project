@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -27,8 +19,6 @@ def image_Text(path):
   text = reader.readtext(input_arr, detail = 0)
 
   return text, input_img
-
-
 
 def extract_data(result):
 
@@ -64,13 +54,6 @@ def extract_data(result):
       return ext_data
 
 
-
-
-
-
-
-#streamlit part
-
 st.set_page_config(layout="wide")
 st.title(":orange[BizCardX] :violet[Extracting Business Card Data with OCR]")
 
@@ -99,26 +82,16 @@ elif options == "Upload":
         st.success("Extracted Successfully")
 
       df = pd.DataFrame(ext_text)
-
-      #converting to bytes
-
       img_Bytes = io.BytesIO()
       input_img.save(img_Bytes, format = "PNG")
-
-
       img_data = img_Bytes.getvalue()
-
       data = {"IMAGE":[img_data]}
-
       df_1 = pd.DataFrame(data)
-
       concat_df = pd.concat([df,df_1], axis = 1)
       st.dataframe(concat_df)
 
       mydb = sqlite3.connect("bizcards.db")
       cursor = mydb.cursor()
-
-      #Create_query
 
       create_query = '''CREATE TABLE IF NOT EXISTS Business_Card(NAME VARCHAR(50),
                                                                 DESIGNATION VARCHAR(100),
@@ -132,8 +105,6 @@ elif options == "Upload":
 
       cursor.execute(create_query)
       mydb.commit()
-
-      #insert Query:
 
       A = '''INSERT INTO Business_Card(NAME, DESIGNATION, COMPANY_NAME, CONTACT, EMAIL, WEBSITE, ADDRESS,PINCODE, IMAGE)
 
