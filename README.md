@@ -27,10 +27,7 @@ This project is a simple application built with Streamlit for extracting informa
     import re
     import io
     import sqlite3
-    
-3. Navigate to the project directory:
-    ```
-    cd bizcard-extraction
+
  
 
 ## Usage
@@ -41,6 +38,8 @@ This project is a simple application built with Streamlit for extracting informa
 2. Upload a business card image using the provided interface.
 3. The application will extract relevant information from the image and display it.
 4. Extracted data will be stored in the SQL database for future reference.
+5. if anything need to change the data we can edit and modify the data's.
+6. if need to delete the details it also be done.
 
 ## Dependencies
 - Streamlit
